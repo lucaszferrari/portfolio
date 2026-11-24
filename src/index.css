@@ -1,0 +1,152 @@
+/* ===== Identidade visual: "planta de arquitetura" ===== */
+:root {
+  --fundo: #0b1220;
+  --fundo-card: #111a2e;
+  --borda: #1f2b45;
+  --texto: #d6deeb;
+  --texto-fraco: #8a99b5;
+  --destaque: #f5a524; /* âmbar */
+  --fonte: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--fonte);
+  color: var(--texto);
+  background-color: var(--fundo);
+  /* grade de fundo, lembrando papel milimetrado de planta */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  line-height: 1.6;
+}
+
+a { color: var(--destaque); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+section { padding: 48px 0; }
+.mono { font-family: var(--mono); }
+.destaque { color: var(--destaque); }
+
+/* ===== Navbar ===== */
+.navbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(11, 18, 32, 0.9);
+  border-bottom: 1px solid var(--borda);
+}
+.logo { font-family: var(--mono); font-weight: 600; font-size: 1.2rem; }
+.links { display: flex; gap: 28px; }
+.links a { color: var(--texto-fraco); font-family: var(--mono); font-size: 0.95rem; }
+.links a:hover { color: var(--texto); text-decoration: none; }
+.links a.active { color: var(--destaque); } /* NavLink coloca "active" sozinho */
+.botao-menu { display: none; background: none; border: none; color: var(--texto); font-size: 1.5rem; cursor: pointer; }
+
+/* ===== Apresentação ===== */
+.apresentacao {
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  padding: 100px 0 60px;
+}
+.apresentacao h1 { font-size: 3.5rem; line-height: 1.1; }
+.cargo { font-size: 1.6rem; color: var(--texto-fraco); margin-bottom: 16px; }
+.resumo { max-width: 520px; color: var(--texto-fraco); }
+.foto {
+  width: 280px; height: 280px;
+  object-fit: cover; object-position: 50% 45%;
+  border-radius: 50%;
+  border: 3px solid var(--destaque);
+  box-shadow: 12px 12px 0 var(--borda);
+}
+.botoes { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+
+/* ===== Botões ===== */
+.botao {
+  display: inline-block; padding: 10px 22px;
+  background: var(--destaque); color: var(--fundo);
+  border: 2px solid var(--destaque); border-radius: 6px;
+  font-family: var(--mono); font-weight: 600; font-size: 0.95rem;
+  cursor: pointer; transition: transform 0.15s;
+}
+.botao:hover { transform: translateY(-2px); text-decoration: none; }
+.botao-vazado { background: transparent; color: var(--destaque); }
+
+/* ===== Títulos e textos ===== */
+.titulo { font-size: 1.8rem; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+.titulo::after { content: ''; flex: 1; height: 1px; background: var(--borda); } /* linha depois do título */
+.titulo-numero { font-family: var(--mono); color: var(--destaque); font-size: 1.2rem; }
+.paragrafo { color: var(--texto-fraco); max-width: 720px; margin-bottom: 14px; }
+
+/* ===== Abas (habilidades e filtro de projetos) ===== */
+.abas { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.aba {
+  padding: 8px 16px; background: transparent;
+  color: var(--texto-fraco); border: 1px solid var(--borda); border-radius: 6px;
+  font-family: var(--mono); cursor: pointer;
+}
+.aba:hover { color: var(--texto); }
+.aba.ativa { color: var(--fundo); background: var(--destaque); border-color: var(--destaque); }
+
+/* ===== Tags ===== */
+.tags { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; }
+.tag {
+  padding: 8px 14px; background: var(--fundo-card);
+  border: 1px solid var(--borda); border-radius: 6px; font-family: var(--mono); font-size: 0.9rem;
+}
+.tags.pequenas .tag { padding: 3px 8px; font-size: 0.75rem; color: var(--texto-fraco); }
+
+/* ===== Cards de projeto ===== */
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.card {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 24px; background: var(--fundo-card);
+  border: 1px solid var(--borda); border-radius: 10px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--destaque); transform: translateY(-4px); }
+.card h3 { font-size: 1.3rem; }
+.card p { color: var(--texto-fraco); }
+.card-tipo { color: var(--destaque); font-size: 0.8rem; }
+.card-detalhes { border-left: 2px solid var(--destaque); padding-left: 12px; font-size: 0.95rem; }
+.card-rodape { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+.link-botao { background: none; border: none; color: var(--destaque); font-family: var(--mono); cursor: pointer; }
+.privado { color: var(--texto-fraco); font-size: 0.8rem; }
+
+/* ===== Contato ===== */
+.formulario { display: flex; flex-direction: column; gap: 16px; max-width: 520px; margin-top: 16px; }
+.formulario label { display: flex; flex-direction: column; gap: 6px; font-family: var(--mono); font-size: 0.9rem; }
+.formulario input, .formulario textarea {
+  padding: 10px; background: var(--fundo-card); color: var(--texto);
+  border: 1px solid var(--borda); border-radius: 6px; font-family: var(--fonte); font-size: 1rem;
+}
+.formulario input:focus, .formulario textarea:focus { outline: none; border-color: var(--destaque); }
+.formulario .botao { align-self: flex-start; }
+.sucesso { margin-top: 16px; padding: 24px; border: 1px solid var(--destaque); border-radius: 10px; max-width: 520px; }
+.sucesso p { margin-bottom: 16px; }
+
+/* ===== Rodapé ===== */
+.rodape {
+  text-align: center; padding: 28px; margin-top: 40px;
+  border-top: 1px solid var(--borda); color: var(--texto-fraco); font-family: var(--mono); font-size: 0.85rem;
+}
+
+/* ===== Celular ===== */
+@media (max-width: 700px) {
+  .botao-menu { display: block; }
+  .links {
+    display: none; /* escondido até clicar no ☰ */
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 16px; padding: 20px 24px;
+    background: var(--fundo); border-bottom: 1px solid var(--borda);
+  }
+  .links.aberto { display: flex; }
+  .apresentacao { flex-direction: column-reverse; text-align: center; padding-top: 40px; }
+  .apresentacao h1 { font-size: 2.5rem; }
+  .resumo { margin: 0 auto; }
+  .botoes { justify-content: center; }
+  .foto { width: 200px; height: 200px; }
+}
